@@ -1,52 +1,166 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('mobstyle/css/bootstrap.min.css')}}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{asset('mobstyle/css/fontawesome.css')}}">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{{asset('mobstyle/css/styles.css')}}">
+    <title>Sign Up</title>
+</head>
+<body>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<!--Loading Container Start-->
+<div id="load" class="loading-overlay display-flex flex-column justify-content-center align-items-center">
+    <div class="primary-color font-28 fas fa-spinner fa-spin"></div>
+</div>
+<!--Loading Container End-->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+<div class="row h-100">
+    <div class="col-xs-12 col-sm-12">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+        <!--Page Title & Icons Start-->
+        <div class="header-icons-container text-center">
+            <a href="sign-up.html">
+                <span class="float-left">
+                    <img src="{{asset('mobstyle/icons/back.svg')}}" alt="Back Icon">
+                </span>
             </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+            <span>Sign Up</span>
         </div>
-    </form>
-</x-guest-layout>
+        <!--Page Title & Icons End-->
+
+        <div class="rest-container">
+            <div class="text-center header-icon-logo-margin">
+                <img src="{{asset('mobstyle/images/logo-main.svg')}}" alt="Main Logo">
+            </div>
+
+            <!--Sign Up Container Start-->
+            <div class="sign-up-form-container text-center">
+                <form class="width-100" method="POST" action="{{ route('register') }}">
+                @csrf
+                    <!--Sign Up Input Field Start-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span>
+                                    <img src="{{asset('mobstyle/icons/avatar-light.svg')}}" alt="Avatar Icon">
+                                </span>
+                            </div>
+                            <input class="form-control" type="text" autocomplete="off" name="name" placeholder="First Name">
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                    <!--Sign Up Input Field Start-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span>
+                                    <img src="{{asset('mobstyle/icons/avatar-light.svg')}}" alt="Avatar Icon">
+                                </span>
+                            </div>
+                            <input class="form-control" type="text" autocomplete="off" name="last_name" placeholder="Last Name">
+                            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                    <!--Sign Up Input Field Start-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span><img src="{{asset('mobstyle/icons/envelope.svg')}}" alt="Envelope Icon"></span>
+                            </div>
+                            <input class="form-control" type="email" autocomplete="off" name="email" placeholder="Email">
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                     <!--Sign Up Input Field Start-->
+                     <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span><img src="{{asset('mobstyle/icons/envelope.svg')}}" alt="Envelope Icon"></span>
+                            </div>
+                            <input class="form-control" type="text" autocomplete="off" max_lenght="11" name="phone" placeholder="Phone nUmber">
+                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                    <!--Sign Up Input Field Start-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                             <span><img src="{{asset('mobstyle/icons/lock.svg')}}" alt="Lock Icon"></span>
+                            </div>
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                            <div class="input-group-append password-visibility">
+                                <span>
+                                    <img src="{{asset('mobstyle/icons/eye.svg')}}" alt="Password Visibility Icon">
+                                </span>
+                            </div>
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                    <!--Sign Up Input Field Start-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span><img src="{{asset('mobstyle/icons/lock.svg')}}" alt="Lock Icon"></span>
+                            </div>
+                            <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password">
+                            <div class="input-group-append password-visibility">
+                                <span>
+                                    <img src="{{asset('mobstyle/icons/eye.svg')}}" alt="Password Visibility Icon">
+                                </span>
+                            </div>
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
+                    </div>
+                    <!--Sign Up Input Field End-->
+
+                    <div class="form-submit-button">
+                    <button type="{{ __('register') }}" class="btn btn-primary text-uppercase font-weight-normal" style="width: 100%;">
+						Register 
+					</button>
+                    </div>
+                </form>
+            </div>
+            <!--Sign Up Container Start-->
+
+        </div>
+    </div>
+
+    <!--Terms And Conditions Agreement Container Start-->
+    <div class="col-xs-12 col-sm-12 text-center sms-rate-text font-roboto flex-end margin-bottom-30">
+        <div class="container-sms-rate-text width-100 font-11">
+            <span class="light-gray font-weight-light">By signing up you have agreed to our </span>
+            <br/>
+            <a href="#" class="dark-link">
+                <span class="font-weight-light">Terms of Use & Privacy Policy</span>
+            </a>
+        </div>
+    </div>
+    <!--Terms And Conditions Agreement Container End-->
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{asset('mobstyle/js/jquery-3.4.1.js')}}"></script>
+<script src="{{asset('mobstyle/js/popper.min.js')}}"></script>
+<script src="{{asset('mobstyle/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('mobstyle/js/main.js')}}"></script>
+</body>
+
+</html>
