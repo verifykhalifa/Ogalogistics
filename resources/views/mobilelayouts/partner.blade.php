@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('mobstyle/css/fontawesome.css')}}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{asset('mobstyle/css/styles.css')}}">
-    <title>ADMIN PANEL</title>
+    <title>Add Route</title>
 </head>
 <body>
 
@@ -36,18 +36,18 @@
                 </span>
             </div>
             <div class="profile-picture text-center">
-                <img src="{{asset('mobstyle/images/profile-3.png')}}" alt="Profile Picture">
+                <img src="{{asset('mobstyle/images/profile-1.png')}}" alt="Profile Picture">
             </div>
             <div class="profile-info">
-                <div class="profile-name text-center">Jonathan McBerly</div>
-                <div class="profile-email text-center">lorem@loremipsum.com</div>
+                <div class="profile-name text-center">naem</div>
+                <div class="profile-email text-center">Email</div>
             </div>
         </div>
         <div class="menu-items">
             <div class="all-menu-items">
                 <a class="menu-item" href="index.html">
                     <div>
-                         <span class="menu-item-icon menu-dark">
+                        <span class="menu-item-icon menu-dark">
                             <img src="{{asset('mobstyle/icons/home.svg')}}" alt="Home Icon">
                         </span>
                         <span class="menu-item-icon menu-light">
@@ -64,46 +64,50 @@
                     <span class="menu-item-icon menu-light profile">
                         <img src="{{asset('mobstyle/icons/avatar.svg')}}" alt="Avatar Darker Icon">
                     </span>
-                    <span class="menu-item-title profile">Customers</span>
+                    <span class="menu-item-title profile">Profile</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="wallet.html">
+                <a class="menu-item" href="payment-method.html">
+                    <span class="menu-item-icon far fa-money-bill-alt"></span>
+                    <span class="menu-item-title">Payment Methods</span>
+                    <span class="menu-item-click fas fa-arrow-right"></span>
+                </a>
+                <a class="menu-item" href="history.html">
+                    <span class="menu-item-icon menu-light">
+                        <img src="{{asset('mobstyle/icons/history-light.svg')}}" alt="History Icon">
+                    </span>
                     <span class="menu-item-icon menu-dark">
-                            <img src="{{asset('mobstyle/icons/my-wallet.svg')}}" alt="Wallet Icon">
-                        </span>
-                    <span class="menu-item-icon menu-light">
-                            <img src="{{asset('mobstyle/icons/my-wallet-light.svg')}}" alt="Wallet Icon">
+                        <img src="{{asset('mobstyle/icons/history.svg')}}" alt="History Icon">
                     </span>
-                    <span class="menu-item-title">Drivers</span>
+                    <span class="menu-item-title">History</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="driver-registration.html">
+                <a class="menu-item" href="addresses.html">
                     <span class="menu-item-icon menu-dark">
-                            <img src="{{asset('mobstyle/icons/driver-registration-dark.svg')}}" alt="Driver Registration Icon">
+                        <img src="{{asset('mobstyle/icons/my-addresses-dark.svg')}}" alt="My Addresses Icon">
                     </span>
                     <span class="menu-item-icon menu-light">
-                            <img src="{{asset('mobstyle/icons/driver-registration.svg')}}" alt="Driver Registration Icon">
+                        <img src=".{{asset('mobstyle/icons/my-addresses.svg')}}" alt="My Addresses Icon">
                     </span>
-                    <span class="menu-item-title">Partners</span>
-                    <span class="menu-item-click fas fa-check green-status"></span>
-                </a>
-                <a class="menu-item position-relative" href="notifications.html">
-                     <span class="menu-item-icon menu-dark">
-                            <img src="{{asset('mobstyle/icons/notification.svg')}}" alt="Notification Icon">
-                    </span>
-                    <span class="menu-item-icon menu-light">
-                            <img src="{{asset('mobstyle/icons/notification-light.svg')}}" alt="Notification Icon">
-                    </span>
-                    <span class="menu-item-title">Admin User</span>
-                    <span class="notification-num">3</span>
+                    <span class="menu-item-title">My Addresses</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="add-new-car.html">
-                    <span class="menu-item-icon fas fa-car"></span>
-                    <span class="menu-item-title">Car Registration</span>
-                    <span class="menu-item-click fas fa-check green-status"></span>
+                <a class="menu-item" href="apply-promo.html">
+                    <span class="menu-item-icon far fa-plus-square"></span>
+                    <span class="menu-item-title promo">Apply Promo Code</span>
+                    <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="support.html">
+                <a class="menu-item" href="settings.html">
+                    <span class="menu-item-icon menu-dark setting">
+                        <img src="{{asset('mobstyle/icons/settings.svg')}}" alt="My Settings Icon">
+                    </span>
+                    <span class="menu-item-icon menu-light setting">
+                        <img src="{{asset('mobstyle/icons/settings-light.svg')}}" alt="My Settings Icon">
+                    </span>
+                    <span class="menu-item-title">Settings</span>
+                    <span class="menu-item-click fas fa-arrow-right"></span>
+                </a>
+                <a class="menu-item" href="online-support.html">
                     <span class="menu-item-icon menu-dark support">
                         <img src="{{asset('mobstyle/icons/support.svg')}}" alt="Support Icon">
                     </span>
@@ -113,7 +117,7 @@
                     <span class="menu-item-title">Online Support</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <form method="POST" action="{{ route('logout') }}">
+				<form method="POST" action="{{ route('logout') }}">
                             @csrf
                 <a href="route('logout')" class="menu-item margin-top-auto" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -131,7 +135,20 @@
     </div>
     <!--Main Menu End-->
 
-    
+    <!-- Modal Start-->
+    <div class="modal fade" id="searchingModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content search">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <span class="fas fa-spinner fa-spin"></span>
+                        <div class="label-title">Searching Driver...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
 
 </div>
 <!-- Optional JavaScript -->

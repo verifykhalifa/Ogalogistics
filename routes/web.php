@@ -27,10 +27,14 @@ Route::get('/history', "App\Http\Controllers\dashcontroller@history")->middlewar
 Route::get('/address', "App\Http\Controllers\dashcontroller@address")->middleware(['auth', 'verified'])->name('address');
 
 
-//Customer Dashboard Routes
+//Admin Dashboard Routes
 Route::get('/admindashboard', "App\Http\Controllers\admincontroller@admindashboard")->name('admindashboard');
 
+//Driver Dashboard Routes
+Route::get('/driverdash', "App\Http\Controllers\drivercontroller@driverdash")->name('driverdash');
 
+//Partner Dashboard Routes
+Route::get('/partnerdash', "App\Http\Controllers\partnercontroller@partnerdash")->name('partnerdash');
 
 
 
