@@ -29,6 +29,16 @@ Route::get('/address', "App\Http\Controllers\dashcontroller@address")->middlewar
 
 //Admin Dashboard Routes
 Route::get('/admindashboard', "App\Http\Controllers\admincontroller@admindashboard")->name('admindashboard');
+Route::get('/managedriver', "App\Http\Controllers\admincontroller@managedriver")->name('managedriver');
+Route::get('/driverreg', "App\Http\Controllers\admincontroller@driverreg")->name('driverreg');
+Route::get('/managepartners', "App\Http\Controllers\admincontroller@managepartners")->name('managepartners');
+Route::get('/partnersreg', "App\Http\Controllers\admincontroller@partnersreg")->name('partnersreg');
+Route::get('/alldriver', "App\Http\Controllers\admincontroller@alldriver")->name('alldriver');
+Route::get('/allpartner', "App\Http\Controllers\admincontroller@allpartner")->name('allpartner');
+Route::get('/manageadminuser', "App\Http\Controllers\admincontroller@manageadminuser")->name('manageadminuser');
+Route::get('/adminuserreg', "App\Http\Controllers\admincontroller@adminuserreg")->name('adminuserreg');
+Route::get('/alladminuser', "App\Http\Controllers\admincontroller@alladminuser")->name('alladminuser');
+Route::get('/alluser', "App\Http\Controllers\admincontroller@alluser")->name('alluser');
 
 //Driver Dashboard Routes
 Route::get('/driverdash', "App\Http\Controllers\drivercontroller@driverdash")->name('driverdash');

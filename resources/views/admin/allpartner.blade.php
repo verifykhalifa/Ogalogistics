@@ -2,13 +2,16 @@
 
 @section('content')
 
-
 <div class="col-xs-12 col-sm-12 remaining-height">
 
         <!--Page Title & Icons Start-->
         <div class="header-icons-container text-center">
-           
-            <span class="title">ADMIN PANEL</span>
+        <a href="/managepartners">
+                <span class="float-left">
+                    <img src="{{asset('mobstyle/icons/back.svg')}}" alt="Back Icon">
+                </span>
+            </a>
+            <span class="title">List Of All Partner</span>
             <a href="#">
                 <span class="float-right menu-open closed">
                     <img src="{{asset('mobstyle/icons/menu.svg')}}" alt="Menu Hamburger Icon">
@@ -18,57 +21,10 @@
         <!--Page Title & Icons Start-->
         <div class="rest-container">
 
-            <!--Graph Container Start-->
-            <div class="all-wide-container trip-history-driver-container">
-                <div class="balance-card-container">
-                    <div class="font-13 font-roboto label-title all-container">All Orders</div>
-                    <div class="font-28 all-container">33,346.50 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas" class="h-100"></canvas>
-                    </div>
-                </div>
-            </div>
-            <!--Graph Container End-->
-
-            <!--Graph slider Container Start-->
-            <div class="small-balance-container slider-container">
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small">
-                    <div class="font-13 font-roboto label-title">Credit Card</div>
-                    <div class="font-20">3,977.00 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas1" class="h-100"></canvas>
-                    </div>
-                </div>
-                <!--Graph Container end-->
-
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small primary-background">
-                    <div class="font-13 font-roboto">PayPal</div>
-                    <div class="font-20">2,190.50 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas2" class="h-100"></canvas>
-                    </div>
-                </div>
-                <!--Graph Container end-->
-
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small">
-                    <div class="font-13 font-roboto label-title">Wire Transfer</div>
-                    <div class="font-20">3,977.00 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas3" class="h-100"></canvas>
-                    </div>
-                </div>
-                <!--Graph Container end-->
-
-            </div>
-            <!--Graph slider Container Start-->
-
             <div class="all-wide-container trip-history-driver-container">
                 <div class="all-transactions-container">
                     <div class="all-transaction-labels font-roboto ">
-                        Transactions
+                        All Partner
                         <span class="label-title view-all float-right">View All</span>
                     </div>
 
@@ -206,9 +162,8 @@
                 <!--Load More Button End-->
 
             </div>
+
         </div>
     </div>
-
-
 
 @endsection

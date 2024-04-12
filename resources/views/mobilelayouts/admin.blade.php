@@ -45,7 +45,7 @@
         </div>
         <div class="menu-items">
             <div class="all-menu-items">
-                <a class="menu-item" href="index.html">
+                <a class="menu-item" href="/admindashboard">
                     <div>
                          <span class="menu-item-icon menu-dark">
                             <img src="{{asset('mobstyle/icons/home.svg')}}" alt="Home Icon">
@@ -57,7 +57,7 @@
                         <span class="menu-item-click fas fa-arrow-right"></span>
                     </div>
                 </a>
-                <a class="menu-item" href="profile.html">
+                <a class="menu-item" href="/alluser">
                     <span class="menu-item-icon menu-dark profile">
                         <img src="{{asset('mobstyle/icons/avatar-dark.svg')}}" alt="Avatar Darker Icon">
                     </span>
@@ -67,7 +67,7 @@
                     <span class="menu-item-title profile">Customers</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="wallet.html">
+                <a class="menu-item" href="/managedriver">
                     <span class="menu-item-icon menu-dark">
                             <img src="{{asset('mobstyle/icons/my-wallet.svg')}}" alt="Wallet Icon">
                         </span>
@@ -77,7 +77,7 @@
                     <span class="menu-item-title">Drivers</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="driver-registration.html">
+                <a class="menu-item" href="/managepartners">
                     <span class="menu-item-icon menu-dark">
                             <img src="{{asset('mobstyle/icons/driver-registration-dark.svg')}}" alt="Driver Registration Icon">
                     </span>
@@ -85,9 +85,9 @@
                             <img src="{{asset('mobstyle/icons/driver-registration.svg')}}" alt="Driver Registration Icon">
                     </span>
                     <span class="menu-item-title">Partners</span>
-                    <span class="menu-item-click fas fa-check green-status"></span>
+                    <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item position-relative" href="notifications.html">
+                <a class="menu-item position-relative" href="/manageadminuser">
                      <span class="menu-item-icon menu-dark">
                             <img src="{{asset('mobstyle/icons/notification.svg')}}" alt="Notification Icon">
                     </span>
@@ -98,34 +98,22 @@
                     <span class="notification-num">3</span>
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </a>
-                <a class="menu-item" href="add-new-car.html">
-                    <span class="menu-item-icon fas fa-car"></span>
-                    <span class="menu-item-title">Car Registration</span>
-                    <span class="menu-item-click fas fa-check green-status"></span>
-                </a>
-                <a class="menu-item" href="support.html">
-                    <span class="menu-item-icon menu-dark support">
-                        <img src="{{asset('mobstyle/icons/support.svg')}}" alt="Support Icon">
-                    </span>
-                    <span class="menu-item-icon menu-light support">
-                        <img src="{{asset('mobstyle/icons/support-light.svg')}}" alt="Support Lighter Icon">
-                    </span>
-                    <span class="menu-item-title">Online Support</span>
-                    <span class="menu-item-click fas fa-arrow-right"></span>
-                </a>
+            
                 <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                <a href="route('logout')" class="menu-item margin-top-auto" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                    <span class="menu-item-icon menu-dark logout">
-                        <img src="{{asset('mobstyle/icons/logout.svg')}}" alt="Logout Icon">
-                    </span>
-                    <span class="menu-item-icon menu-light logout">
-                        <img src="{{asset('mobstyle/icons/logout-light.svg')}}" alt="Logout Icon">
-                    </span>
-                    <span class="menu-item-title logout">Log out</span>
-                    <span class="menu-item-click fas fa-arrow-right"></span>
-                </a>
+                    <a href="route('logout')" class="menu-item margin-top-auto" onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                        <span class="menu-item-icon menu-dark logout">
+                            <img src="{{asset('mobstyle/icons/logout.svg')}}" alt="Logout Icon">
+                        </span>
+                        <span class="menu-item-icon menu-light logout">
+                            <img src="{{asset('mobstyle/icons/logout-light.svg')}}" alt="Logout Icon">
+                        </span>
+                        <span class="menu-item-title logout">Log out</span>
+                        <span class="menu-item-click fas fa-arrow-right"></span>
+                        </form>
+                    </a>
+               
             </div>
         </div>
     </div>
