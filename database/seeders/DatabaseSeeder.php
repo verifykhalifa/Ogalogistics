@@ -15,9 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory(3)->create();
+ 
+        // $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
+        // $this->call(LaratrustSeeder::class);
     }
 }

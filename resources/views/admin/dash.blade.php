@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="col-xs-12 col-sm-12 remaining-height">
 
 <!--Page Title & Icons Start-->
