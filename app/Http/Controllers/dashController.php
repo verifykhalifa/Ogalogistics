@@ -12,7 +12,7 @@ class dashController extends Controller
     public function dashboard()
     {
         
-        return view('dash');
+        return view('JointDashboard.dash');
        
     }
 

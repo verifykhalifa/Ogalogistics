@@ -1,4 +1,4 @@
-@extends('mobilelayouts.admin')
+@extends('mobilelayouts.layouts')
 
 @section('content')
 
