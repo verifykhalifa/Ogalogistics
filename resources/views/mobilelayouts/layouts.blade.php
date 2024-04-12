@@ -20,9 +20,9 @@
 <!--Loading Container End-->
 <div class="row h-100">
 	@yield('content')
-    @include('includes.ridenav')
     <!--Main Menu Start-->
 <div class="main-menu hidden-soft">
+    @include('includes.ridenav')
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{asset('mobstyle/js/jquery-3.4.1.js')}}"></script>
