@@ -1,214 +1,539 @@
-@extends('mobilelayouts.admin')
-
+@extends('mobilelayouts.master')
 @section('content')
 
-
-<div class="col-xs-12 col-sm-12 remaining-height">
-
-        <!--Page Title & Icons Start-->
-        <div class="header-icons-container text-center">
-           
-            <span class="title">ADMIN PANEL</span>
-            <a href="#">
-                <span class="float-right menu-open closed">
-                    <img src="{{asset('mobstyle/icons/menu.svg')}}" alt="Menu Hamburger Icon">
-                </span>
-            </a>
+<!-- begin container-fluid -->
+<div class="container-fluid">
+    <!-- begin row -->
+    <div class="row">
+        <div class="col-md-12 m-b-30">
+            <!-- begin page title -->
+            <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                <div class="page-title mb-2 mb-sm-0">
+                    <h1>Job Portal</h1>
+                </div>
+                <div class="ml-auto d-flex align-items-center">
+                    <nav>
+                        <ol class="breadcrumb p-0 m-b-0">
+                            <li class="breadcrumb-item">
+                                <a href="index.html"><i class="ti ti-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                Dashboard
+                            </li>
+                            <li class="breadcrumb-item active text-primary" aria-current="page">Job
+                                Portal</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- end page title -->
         </div>
-        <!--Page Title & Icons Start-->
-        <div class="rest-container">
-
-            <!--Graph Container Start-->
-            <div class="all-wide-container trip-history-driver-container">
-                <div class="balance-card-container">
-                    <div class="font-13 font-roboto label-title all-container">All Orders</div>
-                    <div class="font-28 all-container">33,346.50 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas" class="h-100"></canvas>
+    </div>
+    <!-- end row -->
+    <!-- begin row -->
+    <div class="row">
+        <div class="col-lg-6 col-xxl-3 m-b-30">
+            <div class="card card-statistics h-100 mb-0">
+                <div class="card-header">
+                    <h4 class="card-title">Job Seekers/Providers</h4>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="apexchart-wrapper">
+                        <div id="jobportaldemo3"></div>
+                    </div>
+                    <div class="row text-center justify-content-center">
+                        <div class="col ml-3">
+                            <h4 class="mb-0">45%</h4>
+                            <span> <i class="fa fa-square pr-1 text-primary"></i> Job Seekers </span>
+                        </div>
+                        <div class="col">
+                            <h4 class="mb-0">55%</h4>
+                            <span> <i class="fa fa-square pr-1 text-info"></i> Job Providers </span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--Graph Container End-->
-
-            <!--Graph slider Container Start-->
-            <div class="small-balance-container slider-container">
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small">
-                    <div class="font-13 font-roboto label-title">Credit Card</div>
-                    <div class="font-20">3,977.00 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas1" class="h-100"></canvas>
+        </div>
+        <div class="col-lg-6 col-xxl-3 m-b-30">
+            <div class="card card-statistics h-100 mb-0 widget-income-list">
+                <div class="card-body d-flex align-itemes-center">
+                    <div class="media align-items-center w-100">
+                        <div class="text-left">
+                            <h3 class="mb-0">45.8k </h3>
+                            <span>Pending Users</span>
+                        </div>
+                        <div class="img-icon bg-pink ml-auto">
+                            <i class="ti ti-user text-white"></i>
+                        </div>
                     </div>
                 </div>
-                <!--Graph Container end-->
-
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small primary-background">
-                    <div class="font-13 font-roboto">PayPal</div>
-                    <div class="font-20">2,190.50 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas2" class="h-100"></canvas>
+                <div class="card-body d-flex align-itemes-center">
+                    <div class="media align-items-center w-100">
+                        <div class="text-left">
+                            <h3 class="mb-0">65.4k </h3>
+                            <span>New Users</span>
+                        </div>
+                        <div class="img-icon bg-primary ml-auto">
+                            <i class="ti ti-tag text-white"></i>
+                        </div>
                     </div>
                 </div>
-                <!--Graph Container end-->
-
-                <!--Graph Container Start-->
-                <div class="balance-card-container-small">
-                    <div class="font-13 font-roboto label-title">Wire Transfer</div>
-                    <div class="font-20">3,977.00 USD</div>
-                    <div class="w-100 graph-container">
-                        <canvas id="canvas3" class="h-100"></canvas>
+                <div class="card-body d-flex align-itemes-center">
+                    <div class="media align-items-center w-100">
+                        <div class="text-left">
+                            <h3 class="mb-0">78.2k </h3>
+                            <span>Deleted Users</span>
+                        </div>
+                        <div class="img-icon bg-orange ml-auto">
+                            <i class="ti ti-wallet text-white"></i>
+                        </div>
                     </div>
                 </div>
-                <!--Graph Container end-->
-
+                <div class="card-body d-flex align-itemes-center">
+                    <div class="media align-items-center w-100">
+                        <div class="text-left">
+                            <h3 class="mb-0">65.3k </h3>
+                            <span>Active Users</span>
+                        </div>
+                        <div class="img-icon bg-info ml-auto">
+                            <i class="ti ti-slice text-white"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--Graph slider Container Start-->
-
-            <div class="all-wide-container trip-history-driver-container">
-                <div class="all-transactions-container">
-                    <div class="all-transaction-labels font-roboto ">
-                        Transactions
-                        <span class="label-title view-all float-right">View All</span>
-                    </div>
-
-                    <!--All Withrdaw History Listing Container Start-->
-                    <div class="all-sales-history-items">
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/mastercard.svg')}}" alt="Mastercard Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>30/09/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #6205422</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$150.32</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/paypal.svg')}}" alt="Paypal Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>11/07/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #6832111</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$141.50</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/ic_bank.svg')}}" alt="Bank Transfer Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>16/05/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #SDA8673DA</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$222.40</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/mastercard.svg')}}" alt="Mastercard Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>17/04/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #GH2342343</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$413.45</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/paypal.svg')}}" alt="Paypal Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>16/03/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #12313677ASREA</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$122.97</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/paypal.svg')}}" alt="Paypal Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>16/02/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #54353111</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$122.37</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/ic_bank.svg')}}" alt="Bank Transfer Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>11/02/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #876834523</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$1442.30</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-
-                        <!--Withrdaw History Item Container Start-->
-                        <div class="display-flex align-items-center sales-history-item">
-                            <div class="all-wide-container">
-                                <img src="{{asset('mobstyle/icons/ic_bank.svg')}}" alt="Bank Transfer Icon">
-                            </div>
-                            <div class="width-100">
-                                <div>01/01/2018</div>
-                                <div class="order-num-container"><span class="label-title font-11 font-roboto">Order #23456KAJSD</span></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="blue-price text-right">$3112.30</div>
-                            </div>
-                        </div>
-                        <!--Withrdaw History Item Container End-->
-                    </div>
-                    <!--All Withrdaw History Listing Container End-->
-
+        </div>
+        <div class="col-xxl-6 m-b-30">
+            <div class="card card-statistics site-visitor h-100 mb-0">
+                <div class="card-header">
+                    <h4 class="card-title">Site Visitors</h4>
                 </div>
-
-                <!--Load More Button Start-->
-                <div class="load-more">
-                    <button type="button" class="btn btn-dark text-uppercase load-more">Load More</button>
+                <div class="card-body pb-0">
+                    <div class="row">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <h2 class="mb-0">154,65</h2>
+                            <span>Total visit</span>
+                        </div>
+                        <div class="col-sm-8 ml-auto">
+                            <div class="row">
+                                <div class="border-right col mr-4">
+                                    <h4 class="mb-0">4,251</h4>
+                                    <span> <i class="fa fa-square pr-1 text-pink"></i> Applicants </span>
+                                </div>
+                                <div class="border-right col mr-4">
+                                    <h4 class="mb-0">6,578</h4>
+                                    <span> <i class="fa fa-square pr-1 text-primary"></i> Interviews </span>
+                                </div>
+                                <div class="col">
+                                    <h4 class="mb-0">2,654</h4>
+                                    <span> <i class="fa fa-square pr-1 text-light"></i> Forwards </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="apexchart-wrapper">
+                        <div id="jobportaldemo4" class="chart-fit"></div>
+                    </div>
                 </div>
-                <!--Load More Button End-->
-
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xxl-6 m-b-30">
+            <div class="card card-statistics h-100 mb-0">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="card-heading">
+                        <h4 class="card-title">Latest Job Seekers</h4>
+                    </div>
+                    <div class="dropdown">
+                        <a class="p-2 export-btn" href="#!" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Export
+                        </a>
+                        <div class="dropdown-menu custom-dropdown dropdown-menu-right p-4">
+                            <h6 class="mb-1">Action</h6>
+                            <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-file-pdf-o pr-2"></i>Export to PDF</a>
+                            <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-file-excel-o pr-2"></i>Export to CSV</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="latestjobs" class="table table-borderless table-striped jobportal-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>User Name</th>
+                                    <th>Position</th>
+                                    <th>Department</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-muted">
+                                <tr>
+                                    <td>#00001</td>
+                                    <td>
+                                        <p>Brian Joedro</p>
+                                    </td>
+                                    <td>Sale associate</td>
+                                    <td>Marketing</td>
+                                    <td>
+                                        Los Angeles
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-success-inverse mb-0">Applied</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#00002</td>
+                                    <td>
+                                        <p>Smithdro</p>
+                                    </td>
+                                    <td>Product designer</td>
+                                    <td>Graphics</td>
+                                    <td>
+                                        Menlo Park, CA
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-warning-inverse mb-0">Pending</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#00003</td>
+                                    <td>
+                                        <p>Adrian Demiandro</p>
+                                    </td>
+                                    <td>Python engineer</td>
+                                    <td>Development</td>
+                                    <td>
+                                        Dallas
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-danger-inverse mb-0">Cancelled</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#00004</td>
+                                    <td>
+                                        <p>Sandradro Garett</p>
+                                    </td>
+                                    <td>Account executive</td>
+                                    <td>Account</td>
+                                    <td>
+                                        New york
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-info-inverse mb-0">On Hold</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#00005</td>
+                                    <td>
+                                        <p>Garydro</p>
+                                    </td>
+                                    <td>Front-end developer</td>
+                                    <td>Developer</td>
+                                    <td>
+                                        Los Angeles
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-success-inverse mb-0">Applied</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#00003</td>
+                                    <td>
+                                        <p>Demiandro</p>
+                                    </td>
+                                    <td>Python engineer</td>
+                                    <td>Development</td>
+                                    <td>
+                                        Dallas
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-danger-inverse mb-0">Cancelled</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-6 m-b-30">
+            <div class="card card-statistics h-100 mb-0 jobportal-contant">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="card-heading">
+                        <h4 class="card-title">Open positions</h4>
+                    </div>
+                    <div class="dropdown">
+                        <a class="p-2 export-btn" href="#!" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Export
+                        </a>
+                        <div class="dropdown-menu custom-dropdown dropdown-menu-right p-4">
+                            <h6 class="mb-1">Action</h6>
+                            <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-file-pdf-o pr-2"></i>Export to PDF</a>
+                            <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-file-excel-o pr-2"></i>Export to CSV</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="openposition" class="table table-borderless table-striped jobportal-table mb-0">
+                            <tbody class="text-muted">
+                                <tr>
+                                    <td>
+                                        <div class="bg-img ml-3">
+                                            <img src="assets/img/browser-logo/google.png" class="img-fluid" alt="user-7">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="d-block"><strong> Senior front-end developer</strong>
+                                            <span class="d-block"> <i class="fa fa-map-marker mr-2"></i> Montreal, Canada</span></p>
+                                    </td>
+                                    <td>
+                                        <p> Over 1 month ago
+                                            <span class="d-block"> <i class="fa fa-briefcase mr-2"></i> Full–time </span></p>
+                                    </td>
+                                    <td class="text-info text-right">
+                                        45 Days left
+                                    </td>
+                                </tr>
 
+                                <tr>
+                                    <td>
+                                        <div class="bg-img ml-3">
+                                            <img src="assets/img/browser-logo/envato.png" class="img-fluid" alt="user-7">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="d-block"><strong> Sales associate</strong>
+                                            <span class="d-block"> <i class="fa fa-map-marker mr-2"></i> London, UK</span></p>
+                                    </td>
+                                    <td>
+                                        <p> Over 2 month ago
+                                            <span class="d-block"> <i class="fa fa-briefcase mr-2"></i> Part–time </span></p>
+                                    </td>
+                                    <td class="text-info text-right">
+                                        80 Days left
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="bg-img ml-3">
+                                            <img src="assets/img/browser-logo/invision.png" class="img-fluid" alt="user-7">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="d-block"><strong> Product designer</strong>
+                                            <span class="d-block"> <i class="fa fa-map-marker mr-2"></i> Delhi, India</span></p>
+                                    </td>
+                                    <td>
+                                        <p> Over 6 month ago
+                                            <span class="d-block"> <i class="fa fa-briefcase mr-2"></i> Part–time </span></p>
+                                    </td>
+                                    <td class="text-info text-right">
+                                        50 Days left
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="bg-img ml-3">
+                                            <img src="assets/img/browser-logo/slack.png" class="img-fluid" alt="user-7">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="d-block"><strong> Python engineer</strong>
+                                            <span class="d-block"> <i class="fa fa-map-marker mr-2"></i> Tokyo, Japan</span></p>
+                                    </td>
+                                    <td>
+                                        <p> Over 10 month ago
+                                            <span class="d-block"> <i class="fa fa-briefcase mr-2"></i> Full–time </span></p>
+                                    </td>
+                                    <td class="text-info text-right">
+                                        20 Days left
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="bg-img ml-3">
+                                            <img src="assets/img/browser-logo/bootstrap.png" class="img-fluid" alt="user-7">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="d-block"><strong> Account executive</strong>
+                                            <span class="d-block"> <i class="fa fa-map-marker mr-2"></i> Menlo Park, CA</span></p>
+                                    </td>
+                                    <td>
+                                        <p> Over 4 month ago
+                                            <span class="d-block"> <i class="fa fa-briefcase mr-2"></i> Casual </span></p>
+                                    </td>
+                                    <td class="text-info text-right">
+                                        10 Days left
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-4 m-b-30">
+            <div class="card card-statistics h-100 mb-0 o-hidden">
+                <div class="card-header">
+                    <h4 class="card-title">Traffic Source</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row align-self-center">
+                        <div class="col">
+                            <h4>Reached 6,454</h4>
+                            <p>Ea consectetur dolorem, enim explicabo necessitatibus</p>
+                            <ul class="jobportaldemo2-list list-unstyled m-t-20">
+                                <li class="py-1"> <i class="fa fa-minus pr-2 text-primary"></i> Direct</li>
+                                <li class="py-1"> <i class="fa fa-minus pr-2 text-primary"></i> Referral</li>
+                                <li class="py-1"> <i class="fa fa-minus pr-2 text-primary"></i> Organic</li>
+                                <li class="py-1"> <i class="fa fa-minus pr-2 text-primary"></i> Social</li>
+                            </ul>
+                        </div>
+                        <div class="apexchart-wrapper col">
+                            <div id="jobportaldemo2" class="jobportaldemo2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="apexchart-wrapper">
+                    <div id="jobportaldemo5" class="chart-fit p-absolute-lrb"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-4 m-b-30">
+            <div class="card card-statistics h-100 mb-0">
+                <div class="card-header">
+                    <h4 class="card-title">Monthly Top Search</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row jus align-itemes-center no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>New york US</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">75k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>Montreal Canada</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">60k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>London UK</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">55k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>Delhi India</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">90k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>Tokyo Japan</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">77k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 77%" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters m-b-10">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>Menlo Park</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">66k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-between">
+                                <span>Mumbai India</span>
+                                <h5 class="mt-1 mt-sm-0 pl-sm-3 mb-0">87k</h5>
+                            </div>
+                            <div class="progress my-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-4 h-100 o-hidden">
+            <div class="card card-statistics h-50 m-b-30 bg-gradient o-hidden">
+                <div class="card-body">
+                    <div class="card-header d-flex justify-content-between border-0 pb-0">
+                        <div class="card-heading">
+                            <h4 class="card-title text-white mb-1">User activations</h4>
+                            <p class="text-white">Last Sale 23.45 USD</p>
+                        </div>
+                        <div class="dropdown">
+                            <a class="p-2 text-white" href="#!" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-circle"></i>
+                            </a>
+                            <div class="dropdown-menu custom-dropdown dropdown-menu-right p-4">
+                                <h6 class="mb-1">Action</h6>
+                                <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-file-o pr-2"></i>View reports</a>
+                                <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-edit pr-2"></i>Edit reports</a>
+                                <a class="dropdown-item" href="#!"><i class="fa-fw fa fa-bar-chart-o pr-2"></i>Statistics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="apexchart-wrapper">
+                    <div id="jobportaldemo6" class="chart-fit jobportaldemo6"></div>
+                </div>
+            </div>
+            <div class="card card-statistics h-50 m-b-30 bg-pink">
+                <div class="card-body">
+                    <div class="d-block d-sm-flex p-3">
+                        <div class="mb-3 mb-sm-0 mr-sm-2">
+                            <h5 class="text-white mb-1">Total # of employees</h5>
+                            <h2 class="text-white mb-0">32548</h2>
+                        </div>
+                        <div class="ml-auto">
+                            <h5 class="text-white mb-1">Their social network reach</h5>
+                            <h2 class="text-white mb-0">425456</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container-fluid -->
 
 @endsection
