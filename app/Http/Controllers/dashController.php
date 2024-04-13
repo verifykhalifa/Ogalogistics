@@ -12,13 +12,12 @@ class dashController extends Controller
     
     public function dashboard()
     {
-        if(auth()->User()->hasRole('admin') || auth()->User()->hasRole('partners'))
+        if(auth()->User()->hasRole('admin'))
         {
             return view('admin.dash');
         }
-
+        
         return view('JointDashboard.dash');
-       
     }
 
 }
