@@ -19,6 +19,9 @@ Route::get('/', function () {
 //   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
 
+Route::post('/route', "App\Http\Controllers\CustomerController@calculateRoute")->name('calculate.route');
+Route::get('/autocomplete', 'App\Http\Controllers\CustomerControlle@autocomplete')->name('autocomplete.route');
+
 
 //Customer Dashboard Routes
 Route::get('/dashboard', "App\Http\Controllers\dashcontroller@dashboard")->middleware(['auth', 'verified'])->name('dashboard');

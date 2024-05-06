@@ -16,7 +16,7 @@ class dashController extends Controller
         {
             return view('admin.dash');
         }
-        
+        // return view('customer.dash');
         return view('JointDashboard.dash');
     }
 

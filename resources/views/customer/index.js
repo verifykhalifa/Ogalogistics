@@ -11,14 +11,8 @@
     <p id="trip-cost"></p>
 
     <!-- Include HERE Map API script here if needed -->
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-data.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-places.js"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-routing.js"></script>
+    <!-- <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script> -->
+    <!-- <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script> -->
 
     <script>
         // Function to geocode an address
@@ -51,30 +45,11 @@
 
         // Function to calculate the trip cost
         function calculateTripCost(origin, destination, callback) {
-            // Calculate distance between origin and destination
-            var earthRadiusKm = 6371; // Radius of the Earth in kilometers
-            var dLat = degreesToRadians(destination.lat - origin.lat);
-            var dLon = degreesToRadians(destination.lng - origin.lng);
-            var lat1 = degreesToRadians(origin.lat);
-            var lat2 = degreesToRadians(destination.lat);
-
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var distance = earthRadiusKm * c; // Distance in kilometers
-
-            // Calculate trip cost based on distance
-            var baseFare = 3.5; // Base fare in dollars
-            var ratePerKm = 2.5; // Rate per kilometer in dollars
-            var tripCost = baseFare + distance * ratePerKm; // Total trip cost
-
+            // Implement trip cost calculation using HERE Routing API or other methods
+            // For demonstration purposes, we'll just return a dummy value
+            var tripCost = 50; // Dummy trip cost
             callback(tripCost); // Call the callback function with the trip cost
         }
-
-            // Function to convert degrees to radians
-            function degreesToRadians(degrees) {
-                return degrees * (Math.PI / 180);
-            }
 
         // Function to calculate and display trip cost
         function calculateAndDisplayTripCost() {
