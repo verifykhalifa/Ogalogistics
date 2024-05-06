@@ -39,6 +39,7 @@ Route::get('/manageadminuser', "App\Http\Controllers\admincontroller@manageadmin
 Route::get('/adminuserreg', "App\Http\Controllers\admincontroller@adminuserreg")->name('adminuserreg');
 Route::get('/alladminuser', "App\Http\Controllers\admincontroller@alladminuser")->name('alladminuser');
 Route::get('/alluser', "App\Http\Controllers\admincontroller@alluser")->name('alluser');
+Route::get('/orderallocation', "App\Http\Controllers\admincontroller@orderallocation")->name('orderallocation');
 
 //Driver Dashboard Routes
 Route::get('/driverdash', "App\Http\Controllers\drivercontroller@driverdash")->name('driverdash');

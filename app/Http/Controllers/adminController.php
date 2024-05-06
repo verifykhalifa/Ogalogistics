@@ -84,4 +84,11 @@ class adminController extends Controller
        
     }
 
+    public function orderallocation()
+    {
+        
+            return view('admin.orderallocation');
+       
+    }
+
 }
