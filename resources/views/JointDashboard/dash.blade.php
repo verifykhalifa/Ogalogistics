@@ -28,20 +28,12 @@
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
                         <input id="location-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0;"  placeholder="    Pick up location">
-                        {{-- <span class="mic"><img src="{{asset('mobstyle/icons/microphone.svg')}}" alt="Microphone Icon"></span>
-                        <span class="remove">
-                            <img src="{{asset('mobstyle/icons/cross-light.svg')}}" alt="Remove Icon Light Color">
-                        </span> --}}
                     </div>
                 </div>
                 <div class="w-100 map-input-container map-input-container-bottom mt-3">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
                         <input id="destination-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400"  placeholder="    Enter a destination location">
-                        {{-- <span class="mic"><img src="{{asset('mobstyle/icons/microphone.svg')}}" alt="Microphone Icon"></span>
-                        <span class="remove">
-                            <img src="{{asset('mobstyle/icons/cross-light.svg')}}"  alt="Remove Icon Light Color">
-                        </span> --}}
                     </div>
                     <span class="dotted-line-index"></span>
                 </div>
@@ -50,17 +42,6 @@
             {{-- <p id="distance"></p> --}}
             <div class="payment-options">
                 <div class="default-payment-method-container display-flex">
-                    {{-- <div class="cars-options">
-                        <div class="car-option" data-about-target-id="about-section-1">
-                            <img src="{{asset('mobstyle/icons/audi.svg')}}" alt="Car Option 1">
-                        </div>
-                        <div class="car-option active" data-about-target-id="about-section-2">
-                            <img src="{{asset('mobstyle/icons/limusine.svg')}}" alt="Car Option 2">
-                        </div>
-                        <div class="car-option" data-about-target-id="about-section-3">
-                            <img src="{{asset('mobstyle/icons/minivan.svg')}}" alt="Car Option 3">
-                        </div>
-                    </div> --}}
                     <div class="about-section display-flex">
                         <div>
                             <div class="about-section-title" style="margin-left: 20px">
@@ -82,12 +63,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div style="display:flex">
-                        <h5 id="trip-distance"></h5>
-                        <h5 id="trip-time"></h5>
-                        <h5 id="trip-cost"></h5>
-                    </div>
-                </div> --}}
             </div>
             <div style="margin-top: 10px">
                 <button type="button" id="button1" class="btn btn-primary" style="width:100%">Request a Ride</button>

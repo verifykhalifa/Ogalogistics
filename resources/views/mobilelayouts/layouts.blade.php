@@ -294,14 +294,15 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
+                    var position = { lat: userLocation.lat, lng: userLocation.lng };
+                    //console.log(position);
+
                     var svgMarkup = '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" fill="#34b7eb"/></svg>';
                     var icon = new H.map.Icon(svgMarkup);
                     var userMarker = new H.map.Marker(userLocation, { icon: icon });
                     markerGroup.addObject(userMarker);
                     map.setCenter(userLocation);
-
                     //console.log(userLocation); return
-
                     // Reverse geocode the coordinates to get the address
                     service.reverseGeocode({
                         at: userLocation.lat + ',' + userLocation.lng
@@ -369,7 +370,6 @@
                         });
                 });
             }
-
                 // Define a function to handle polyline calculation
                 function calculatePolyline(position, isOrigin) {
                     // Check if it's the origin or destination
@@ -384,18 +384,52 @@
                     }
                 }
 
+                // Function to calculate and display route polyline
                 function addPolyline(origin, destination) {
-                    // console.log(origin); 
-                    // console.log(destination); return
-                    var lineString = new H.geo.LineString();
-                    lineString.pushPoint(origin);
-                    lineString.pushPoint(destination);
+                    // Construct the URL for the Routing API request
+                    const apiKey = 'tdkQfK69IDDRiWG-F4Skm6f_OAzaJ3Qx_dn5Pbp9bQ4';
+                    const url = `https://router.hereapi.com/v8/routes?transportMode=car&origin=${origin.lat},${origin.lng}&destination=${destination.lat},${destination.lng}&return=polyline&apiKey=${apiKey}`;
 
-                    var polyline = new H.map.Polyline(lineString, {
-                        style: { lineWidth: 7 }
-                    });
-                    map.addObject(polyline);
+                    // Make a GET request to the Routing API endpoint
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Extract the route polyline from the response
+                            const route = data.routes[0];
+                            const routeShape = route.sections[0].polyline;
+
+                            // Decode the route polyline to obtain coordinates
+                            const routeCoords = H.geo.LineString.fromFlexiblePolyline(routeShape).getLatLngAltArray();
+
+                            // Create a polyline object
+                            const polyline = new H.map.Polyline(new H.geo.LineString(routeCoords), {
+                                style: { lineWidth: 5 }
+                            });
+
+                            // Add the polyline to the map
+                            map.addObject(polyline);
+
+                            // Zoom to fit the route polyline
+                            map.getViewModel().setLookAtData({ bounds: polyline.getBoundingBox() });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching route:', error);
+                        });
                 }
+
+
+                // function addPolyline(origin, destination) {
+                //     // console.log(origin); 
+                //     // console.log(destination); return
+                //     var lineString = new H.geo.LineString();
+                //     lineString.pushPoint(origin);
+                //     lineString.pushPoint(destination);
+
+                //     var polyline = new H.map.Polyline(lineString, {
+                //         style: { lineWidth: 7 }
+                //     });
+                //     map.addObject(polyline);
+                // }
 
                 // Define a function to handle polyline calculation
                 function calculateTrip(position, isOrigin) {
