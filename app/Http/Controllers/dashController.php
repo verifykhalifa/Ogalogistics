@@ -28,4 +28,14 @@ class dashController extends Controller
         return view('JointDashboard.dash');
     }
 
+    public function trackorder()
+    {
+        return view('customer.trackorder');
+    }
+
+    public function orderhistory()
+    {
+        return view('customer.orderhistory');
+    }
+
 }
