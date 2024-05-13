@@ -27,19 +27,19 @@
                     <span class="menu-item-click fas fa-arrow-right"></span>
                 </div>
             </a>
-            <a class="menu-item" href="profile.html">
+            <a class="menu-item" href="/trackorder">
                 <span class="menu-item-icon menu-dark profile">
                     <img src="{{asset('mobstyle/icons/avatar-dark.svg')}}" alt="Avatar Darker Icon">
                 </span>
                 <span class="menu-item-icon menu-light profile">
                     <img src="{{asset('mobstyle/icons/avatar.svg')}}" alt="Avatar Darker Icon">
                 </span>
-                <span class="menu-item-title profile">Profile</span>
+                <span class="menu-item-title profile">Track My Order</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
-            <a class="menu-item" href="payment-method.html">
+            <a class="menu-item" href="/orderhistory">
                 <span class="menu-item-icon far fa-money-bill-alt"></span>
-                <span class="menu-item-title">Payment Methods</span>
+                <span class="menu-item-title">Order History</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
             <a class="menu-item" href="history.html">
@@ -49,44 +49,10 @@
                 <span class="menu-item-icon menu-dark">
                     <img src="{{asset('mobstyle/icons/history.svg')}}" alt="History Icon">
                 </span>
-                <span class="menu-item-title">History</span>
+                <span class="menu-item-title">Contact Us</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
-            <a class="menu-item" href="addresses.html">
-                <span class="menu-item-icon menu-dark">
-                    <img src="{{asset('mobstyle/icons/my-addresses-dark.svg')}}" alt="My Addresses Icon">
-                </span>
-                <span class="menu-item-icon menu-light">
-                    <img src=".{{asset('mobstyle/icons/my-addresses.svg')}}" alt="My Addresses Icon">
-                </span>
-                <span class="menu-item-title">My Addresses</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="apply-promo.html">
-                <span class="menu-item-icon far fa-plus-square"></span>
-                <span class="menu-item-title promo">Apply Promo Code</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="settings.html">
-                <span class="menu-item-icon menu-dark setting">
-                    <img src="{{asset('mobstyle/icons/settings.svg')}}" alt="My Settings Icon">
-                </span>
-                <span class="menu-item-icon menu-light setting">
-                    <img src="{{asset('mobstyle/icons/settings-light.svg')}}" alt="My Settings Icon">
-                </span>
-                <span class="menu-item-title">Settings</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="online-support.html">
-                <span class="menu-item-icon menu-dark support">
-                    <img src="{{asset('mobstyle/icons/support.svg')}}" alt="Support Icon">
-                </span>
-                <span class="menu-item-icon menu-light support">
-                    <img src="{{asset('mobstyle/icons/support-light.svg')}}" alt="Support Lighter Icon">
-                </span>
-                <span class="menu-item-title">Online Support</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
+           
             <form method="POST" action="{{ route('logout') }}">
                         @csrf
             <a href="route('logout')" class="menu-item margin-top-auto" onclick="event.preventDefault();
@@ -254,12 +220,12 @@
                 <span class="menu-item-icon menu-light profile">
                     <img src="{{asset('mobstyle/icons/avatar.svg')}}" alt="Avatar Darker Icon">
                 </span>
-                <span class="menu-item-title profile">Profile</span>
+                <span class="menu-item-title profile">Track My Order</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
             <a class="menu-item" href="payment-method.html">
                 <span class="menu-item-icon far fa-money-bill-alt"></span>
-                <span class="menu-item-title">Payment Methods</span>
+                <span class="menu-item-title">Order History</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
             <a class="menu-item" href="history.html">
@@ -269,44 +235,10 @@
                 <span class="menu-item-icon menu-dark">
                     <img src="{{asset('mobstyle/icons/history.svg')}}" alt="History Icon">
                 </span>
-                <span class="menu-item-title">History</span>
+                <span class="menu-item-title">Contact Us</span>
                 <span class="menu-item-click fas fa-arrow-right"></span>
             </a>
-            <a class="menu-item" href="addresses.html">
-                <span class="menu-item-icon menu-dark">
-                    <img src="{{asset('mobstyle/icons/my-addresses-dark.svg')}}" alt="My Addresses Icon">
-                </span>
-                <span class="menu-item-icon menu-light">
-                    <img src=".{{asset('mobstyle/icons/my-addresses.svg')}}" alt="My Addresses Icon">
-                </span>
-                <span class="menu-item-title">My Addresses</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="apply-promo.html">
-                <span class="menu-item-icon far fa-plus-square"></span>
-                <span class="menu-item-title promo">Apply Promo Code</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="settings.html">
-                <span class="menu-item-icon menu-dark setting">
-                    <img src="{{asset('mobstyle/icons/settings.svg')}}" alt="My Settings Icon">
-                </span>
-                <span class="menu-item-icon menu-light setting">
-                    <img src="{{asset('mobstyle/icons/settings-light.svg')}}" alt="My Settings Icon">
-                </span>
-                <span class="menu-item-title">Settings</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
-            <a class="menu-item" href="online-support.html">
-                <span class="menu-item-icon menu-dark support">
-                    <img src="{{asset('mobstyle/icons/support.svg')}}" alt="Support Icon">
-                </span>
-                <span class="menu-item-icon menu-light support">
-                    <img src="{{asset('mobstyle/icons/support-light.svg')}}" alt="Support Lighter Icon">
-                </span>
-                <span class="menu-item-title">Online Support</span>
-                <span class="menu-item-click fas fa-arrow-right"></span>
-            </a>
+           
             <form method="POST" action="{{ route('logout') }}">
                         @csrf
             <a href="route('logout')" class="menu-item margin-top-auto" onclick="event.preventDefault();
