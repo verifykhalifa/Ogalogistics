@@ -21,85 +21,56 @@
                <!--Google Maps Start-->
                <div id="map-container" class="h-100"></div>
 
-               <!--Tapped Car Information Container Start-->
-    <form id="tripDetailsForm" method="POST" action="{{route('request.ride')}}"> 
+               <!--Tapped Car Information Container Start-->;
+    <form id="tripDetailsForm" method="POST" action="{{route('order.placed', hash('sha256', (string)auth()->user()->id))}}"> 
         @csrf
         <div class="">
             <div class="request-item-container remaining-height">
-                
                 <div class="all-wide-container history-items-container overflow-scroll-y remaining-height">
                     <div class="history-item driver-request">
-
-                       
-
                         <div class="border-bottom-primary">
                             <div class="status-container status-container-driver">
                             </div>
                         </div>
-
-                        
                         <div class="margin-top-10 height-auto" id="origin-input-container">
                 {{-- <span id="current-location"></span> --}}
-                <div class="w-100 map-input-container map-input-container-top mt-3">
+                <div class="w-100 map-input-container map-input-container-top mt-3" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
-                        <input id="location-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0;"  placeholder="    Pick up location">
+                        <input id="location-input" class="controls flex-1" type="text" placeholder="    Pick up location">
                     </div>
                 </div>
-                <div class="w-100 map-input-container map-input-container-bottom mt-3">
+                <div class="w-100 map-input-container map-input-container-bottom mt-3" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
-                        <input id="destination-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400"  placeholder="    Enter a destination location">
+                        <input id="destination-input" class="controls flex-1" type="text" placeholder="    Enter a destination location">
                     </div>
-                    <span class="dotted-line-index"></span>
+                    {{-- <span class="dotted-line-index"></span> --}}
                 </div>
                 <ul id="suggestion-list"></ul>  
             </div>
             {{-- <p id="distance"></p> --}}
             <div class="payment-options">
                 <div class="default-payment-method-container display-flex">
-                    {{-- <div class="cars-options">
-                        <div class="car-option" data-about-target-id="about-section-1">
-                            <img src="{{asset('mobstyle/icons/audi.svg')}}" alt="Car Option 1">
-                        </div>
-                        <div class="car-option active" data-about-target-id="about-section-2">
-                            <img src="{{asset('mobstyle/icons/limusine.svg')}}" alt="Car Option 2">
-                        </div>
-                        <div class="car-option" data-about-target-id="about-section-3">
-                            <img src="{{asset('mobstyle/icons/minivan.svg')}}" alt="Car Option 3">
-                        </div>
-                    </div> --}}
                     <div class="about-section display-flex">
                         <div>
-                            <div class="about-section-title" style="margin-left: 20px">
-                                <strong id="trip_cost_init"></strong>
-                            </div>
                             <div class="trip-fare-container trip-fare-driver font-weight-light">
-
                                 <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
-                                    <span class="float-left">Estimate Price</span>
-                                    <span class="float-right blue-price" id="trip-cost" ></span>
-                                    <span class="clearfix"></span>
+                                    {{-- <span class="float-left">Estimate Price</span> --}}
+                                    <span id="trip_cost_init"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
-
-                                <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
-                                    <span class="float-left">Distance</span>
-                                    <span class="float-right blue-price" id="trip-distance"></span>
-                                    <span class="clearfix"></span>
+                                    {{-- <span class="float-left">Distance</span> --}}
+                                    <span id="trip-distance-init"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
-
-                                <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
-                                    <span class="float-left">Time</span>
-                                    <span class="float-right blue-price" id="trip-time"></span>
-                                    <span class="clearfix"></span>
+                                    {{-- <span class="float-left">Time</span> --}}
+                                    <span id="trip-time-init"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
-
                             </div>
                         </div>
                     </div>

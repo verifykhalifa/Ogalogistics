@@ -55,186 +55,6 @@
 <script src="{{asset('mobstyle/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('mobstyle/js/main.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1eGdP6hCYQ06z86dMEwoLNFMPYPbhgYs&amp;libraries=places&amp;callback=initMap"></script>
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get reference to the current location element
-        var currentLocationElement = document.getElementById('current-location');
-        var platform = new H.service.Platform({
-            'apikey': 'tdkQfK69IDDRiWG-F4Skm6f_OAzaJ3Qx_dn5Pbp9bQ4'
-        });
-    
-        var service = platform.getSearchService();
-        var mapContainer = document.getElementById('map-container');
-        var locationInput = document.getElementById('location-input');
-        var destinationInput = document.getElementById('destination-input');
-        var suggestionList = document.getElementById('suggestion-list');
-
-            // Initialize the HERE Map
-        var defaultLayers = platform.createDefaultLayers();
-
-        var map = new H.Map(mapContainer, defaultLayers.vector.normal.map, {
-        center: { lng: 3.406448, lat: 6.465422},
-        zoom: 12,
-        pixelRatio: window.devicePixelRatio || 1
-    });
-
-        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-        // Enable map interaction (panning, zooming, etc.)
-        var ui = H.ui.UI.createDefault(map, defaultLayers);
-
-    
-        // Create a marker group to hold the markers
-        var markerGroup = new H.map.Group();
-        map.addObject(markerGroup);
-
-        // Function to add marker and center map on selected location
-        function addMarkerAndCenter(position) {
-            // Clear previous markers
-            markerGroup.removeAll();
-
-            // Add marker for selected location
-            var marker = new H.map.Marker(position);
-            markerGroup.addObject(marker);
-
-            // Center the map on the selected location
-            map.setCenter(position);
-        }
-
-        // Function to add markers for origin and destination and connect them with a polyline
-        function addMarkersAndConnect(locationInput, destinationInput) {
-            // Clear previous markers and polyline
-            markerGroup.removeAll();
-            map.removeObjects(map.getObjectsByType('polyline'));
-
-            // Add marker for origin
-            var originMarker = new H.map.Marker(locationInput);
-            markerGroup.addObject(originMarker);
-
-            // Add marker for destination
-            var destinationMarker = new H.map.Marker(destinationInput);
-            markerGroup.addObject(destinationMarker);
-
-            // Create polyline between origin and destination
-            var lineString = new H.geo.LineString();
-
-            lineString.pushPoint(originMarker);
-            lineString.pushPoint(destinationMarker);
-
-            var polyline = new H.map.Polyline(lineString, {
-                style: { lineWidth: 10, strokeColor: 'blue' }
-            });
-            map.addObject(polyline);
-
-            // Fit the map to include both markers and polyline
-            var boundingBox = new H.geo.Rect(origin.lat, origin.lng, destination.lat, destination.lng);
-            map.getViewModel().setLookAtData({ bounds: boundingBox });
-        }
-
-        // Function to handle errors when getting user's location
-        function handleLocationError(error) {
-            console.error('Error getting user location:', error);
-        }
-
-            // Check if geolocation is supported
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    // Get latitude and longitude
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
-
-                    // Display current location
-                    currentLocationElement.textContent = 'Latitude: ' + latitude + ', Longitude: ' + longitude;
-                }, function(error) {
-                    console.error('Error getting current location:', error);
-                    currentLocationElement.textContent = 'Error getting current location';
-                });
-            } else {
-                // Geolocation not supported
-                console.error('Geolocation is not supported by this browser');
-                currentLocationElement.textContent = 'Geolocation is not supported by this browser';
-            }
-
-        // Get user's current location and center the map on it
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var userLocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-
-                //console.log(userLocation);
-
-            // Create a red icon for the user marker
-            var svgMarkup = '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" fill="#34b7eb"/></svg>';
-            var icon = new H.map.Icon(svgMarkup);
-
-            // Add red marker for user's location
-            var userMarker = new H.map.Marker(userLocation, { icon: icon });
-
-            markerGroup.addObject(userMarker);
-            
-                map.setCenter(userLocation);
-            }, handleLocationError);
-        } else {
-            console.error('Geolocation is not supported by this browser.');
-        }
-
-        locationInput.addEventListener('input', function(e) {
-            service.geocode({
-                q: locationInput.value
-            }, function(result) {
-                // Clear previous suggestions
-            suggestionList.innerHTML = '';
-                // Display autocomplete suggestions
-                result.items.forEach(function(item) {
-                var suggestion = document.createElement('li');
-                suggestion.textContent = item.title;
-                suggestion.addEventListener('click', function() {
-                    // Set the input value to the selected suggestion
-                    locationInput.value = item.title;
-                    // Clear suggestion list
-                    suggestionList.innerHTML = '';
-
-                // Add marker for selected location
-                addMarkerAndCenter(item.position);
-                });
-                suggestionList.appendChild(suggestion);
-             });
-                // console.log(result.items);
-            }, function(error) {
-                console.error(error);
-            });
-        });
-
-        destinationInput.addEventListener('input', function(e) {
-            service.geocode({
-                q: destinationInput.value
-            }, function(result) {
-                // Clear previous suggestions
-            suggestionList.innerHTML = '';
-                // Display autocomplete suggestions
-                result.items.forEach(function(item) {
-                var suggestion = document.createElement('li');
-                suggestion.textContent = item.title;
-                suggestion.addEventListener('click', function() {
-                    // Set the input value to the selected suggestion
-                    destinationInput.value = item.title;
-                    // Clear suggestion list
-                    suggestionList.innerHTML = '';
-
-                // Add marker for selected location
-                addMarkerAndCenter(item.position);
-                });
-                suggestionList.appendChild(suggestion);
-             });
-                // console.log(result.items);
-            }, function(error) {
-                console.error(error);
-            });
-        });
-    });
-</script> --}}
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var platform = new H.service.Platform({
@@ -466,8 +286,8 @@
                         timeText += minutes.toFixed(0) + ' minutes';
 
                         // Display trip details on HTML page
-                        document.getElementById('trip-distance').innerHTML = 'Distance: ' + '<br>' + distance.toFixed(2) + ' km';
-                        document.getElementById('trip-time').innerHTML = 'Time: ' + '<br>' + timeText;
+                        document.getElementById('trip-distance-init').innerHTML = '<b>Distance</b>: ' + distance.toFixed(2) + ' km';
+                        document.getElementById('trip-time-init').innerHTML = '<b>Time</b>: ' + timeText;
                         // document.getElementById('trip-cost').innerHTML = 'Trip Cost: ' + '<br>' +'$'+tripCost.toFixed(2);
 
                         // Populate hidden input fields with trip details
@@ -480,7 +300,7 @@
                     .catch(error => {
                         console.error('Error fetching trip details:', error);
                     });
-            }
+                }
 
                 // Function to calculate trip cost based on distance (for example)
                 function calculateTripCost(distance) {
@@ -492,7 +312,7 @@
                             var ratePerKm = parseFloat(data.rate_per_km);
                             var tripCost = baseFare + distance * ratePerKm; 
                             //console.log(tripCost);
-                            document.getElementById('trip_cost_init').innerHTML = 'Trip Cost: ' + '<br>' +'$'+tripCost.toFixed(2);
+                            document.getElementById('trip_cost_init').innerHTML = '<b>Trip Cost</b>: ' + '$'+tripCost.toFixed(2);
                             document.getElementById('trip_cost').value = tripCost.toFixed(2);
                             return tripCost;
                         })

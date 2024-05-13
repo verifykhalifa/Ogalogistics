@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('trip_time');
             $table->string('trip_cost');
             $table->string('user_id');
+            $table->string('hashed');
+            $table->string('tracking');
+            $table->string('order_id');
             $table->timestamps();
         });
     }

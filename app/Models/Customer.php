@@ -15,7 +15,10 @@ class Customer extends Model
         'trip_distance',  
         'trip_time',      
         'trip_cost',     
-        'user_id'      
+        'user_id',
+        'hashed',
+        'tracking',
+        'order_id'      
     ];
 
 

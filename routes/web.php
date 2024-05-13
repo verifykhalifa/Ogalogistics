@@ -25,6 +25,7 @@ Route::resource('/customer', 'App\Http\Controllers\CustomerController');
 Route::resource('/estimate', 'App\Http\Controllers\EstimateController');
 Route::post('/request-ride', "App\Http\Controllers\CustomerController@requestRide")->name('request.ride');
 Route::get('/fetch-fare-rate', 'App\Http\Controllers\CustomerController@fetch');
+Route::post('/order-placed/{string}', 'App\Http\Controllers\CustomerController@orderPlaced')->name('order.placed');
 
 //Customer Dashboard Routes
 Route::get('/dashboard', "App\Http\Controllers\dashcontroller@dashboard")->middleware(['auth', 'verified'])->name('dashboard');

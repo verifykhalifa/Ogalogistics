@@ -32,9 +32,9 @@
             <h6>Order ID: OD45345345435</h6>
             <article class="card">
                 <div class="card-body row">
-                    <div class="col"> <strong>Estimated Delivery By:</strong> <br>29 nov 2019 </div>
                     <div class="col"> <strong>Shipping From:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
                     <div class="col"> <strong>Shipping To:</strong> <br> Picked by the courier </div>
+                    <div class="col"> <strong>Estimated Delivery By:</strong> <br>29 nov 2019 </div>
                     <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
                 </div>
             </article>
