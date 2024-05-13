@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EstimateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,9 +21,10 @@ Route::get('/', function () {
 //   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
 
-Route::post('/route', "App\Http\Controllers\CustomerController@calculateRoute")->name('calculate.route');
-Route::get('/autocomplete', 'App\Http\Controllers\CustomerControlle@autocomplete')->name('autocomplete.route');
-
+Route::resource('/customer', 'App\Http\Controllers\CustomerController');
+Route::resource('/estimate', 'App\Http\Controllers\EstimateController');
+Route::post('/request-ride', "App\Http\Controllers\CustomerController@requestRide")->name('request.ride');
+Route::get('/fetch-fare-rate', 'App\Http\Controllers\CustomerController@fetch');
 
 //Customer Dashboard Routes
 Route::get('/dashboard', "App\Http\Controllers\dashcontroller@dashboard")->middleware(['auth', 'verified'])->name('dashboard');

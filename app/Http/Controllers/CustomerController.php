@@ -5,101 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\User;
+use App\Models\Estimate;
 use GuzzleHttp\Client;
+use Auth;
 
 class CustomerController extends Controller
 {
-    // Controller method to handle estimating taxi fare
-public function calculateRoute(Request $request)
-{
-    dd($request->all());
-    
-    // Get pickup and drop-off locations from user input
-    $pickup = $request->input('pickup');
-    $dropoff = $request->input('dropoff');
 
-    // Call Google Maps API to calculate distance and time
-    $distance = $this->calculateDistance($pickup, $dropoff);
-    $time = $this->calculateTime($pickup, $dropoff);
+    public function requestRide(Request $request)
+    {
+    $data = [
+        'origin'          => $request->origin,
+        'destination'     => $request->destination,
+        'trip_distance'   => $request->trip_distance,
+        'trip_time'       => $request->trip_time,
+        'trip_cost'       => $request->trip_cost,
+        'user_id'         => $request->user_id
+    ];
 
-    // Apply pricing algorithm to calculate fare
-    $fare = $this->calculateFare($distance, $time);
+    //dd($data);
 
-    // Return the estimated fare to the user
-    return response()->json(['fare' => $fare]);
-}
+    $trip = Customer::create($data);
 
-// Function to calculate distance using Google Maps API
-private function calculateDistance($pickup, $dropoff)
-{
-    // Make API call to get distance between pickup and drop-off locations
-    // Example: Use Google Maps Distance Matrix API
-    // $distance = ...; 
+    return back();
 
-    $client = new Client();
+    // return view('rate.view')->with('rates', $rates);
+    }
 
-    $response = $client->get('https://api.distancematrix.ai/maps/api/distancematrix/json?origins=$pickup&destinations=$dropoff&key=0pUP5m4UWRvhPgWKZ9jfdxHsrm2YpBqV5RR56gldhAnuCVvKq9npxlSYGk2ClB2E');
-
-    $body = $response->getBody();
-    $contents = $body->getContents();
-
-    // Process the response data
-    return $contents;
-
-}
-
-// Function to calculate estimated time using Google Maps API
-private function calculateTime($pickup, $dropoff)
-{
-    // Make API call to get estimated time for journey
-    // Example: Use Google Maps Directions API
-    // $time = ...;
-
-    return $time;
-}
-
-// Function to calculate fare based on distance, time, and pricing algorithm
-private function calculateFare($distance, $time)
-{
-    // Example pricing algorithm (simplified)
-    $baseFare = 3.00; // Base fare
-    $perMileRate = 2.00; // Per mile rate
-    $perMinuteRate = 0.50; // Per minute rate
-
-    $fare = $baseFare + ($perMileRate * $distance) + ($perMinuteRate * $time);
-
-    return $fare;
-}
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $estimate = Estimate::all();
+        
+        return view('admin.estimate')->with('estimate', $estimate);
     }
 
     /**
@@ -107,7 +44,8 @@ private function calculateFare($distance, $time)
      */
     public function edit(string $id)
     {
-        //
+        $estimate = Estimate::findorfail($id)->first();
+        return view('admin.editEstimate')->with('estimate', $estimate);
     }
 
     /**
@@ -115,7 +53,29 @@ private function calculateFare($distance, $time)
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data = $request->except(['_method','_token']);
+
+        $trip = Estimate::findorfail($id)->first();
+
+        $trip->update($data);
+
+        return back();
+    }
+
+    public function fetch()
+    {
+        $estimate = Estimate::all();
+
+        $baseFare = $estimate[0]['baseFare'];
+        $ratePerKm = $estimate[0]['ratePerKm'];
+
+        // Return base fare and rate per kilometer as JSON response
+        return response()->json([
+            'base_fare' => $baseFare,
+            'rate_per_km' => $ratePerKm,
+        ]);
+        
     }
 
     /**

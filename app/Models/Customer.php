@@ -10,18 +10,17 @@ class Customer extends Model
     use HasFactory;
 
     Protected $fillable = [
-        'name',
-        'phone',      
-        'email',      
-        'dob',        
-        'invoice',    
-        'product',    
-        'unit'
+        'origin',
+        'destination',  
+        'trip_distance',  
+        'trip_time',      
+        'trip_cost',     
+        'user_id'      
     ];
 
 
-    // public function retails(){
+    public function customer(){
 
-    //     return $this->hasMany('App/Models/Store');
-    //  }
+        return $this->hasOne('App/Models/Driver');
+     }
 }
