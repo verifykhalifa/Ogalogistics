@@ -92,7 +92,7 @@
                     };
                     var position = { lat: userLocation.lat, lng: userLocation.lng };
                     //console.log(position);
-
+                    
                     var svgMarkup = '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" fill="#34b7eb"/></svg>';
                     var icon = new H.map.Icon(svgMarkup);
                     var userMarker = new H.map.Marker(userLocation, { icon: icon });
@@ -106,8 +106,6 @@
                         // Extract the address from the result
                         var address = result.items[0].address.label;
                          locationInput.value = address;
-                        //currentLocationElement.textContent = 'Current Location: ' + address;
-                         //locationInput.value = address;
                         currentLocationElement.textContent = 'Current Location: ' + address;
                     }, function(error) {
                         console.error('Reverse geocoding error:', error);

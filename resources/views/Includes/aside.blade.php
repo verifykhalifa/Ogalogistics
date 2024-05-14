@@ -8,11 +8,11 @@
             <li><a href="/alluser" aria-expanded="false"><i class="fa fa-users"></i><span class="nav-title">Customer</span></a> </li>
             <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-motorcycle"></i><span class="nav-title">Driver</span></a>
                 <ul aria-expanded="false">
-                    <li> <a href='/driverreg'>Create Driverr</a> </li>
+                    <li> <a href='/driverreg'>Create Driver</a> </li>
                     <li> <a href='/managedriver'>Manage Driver</a> </li>
                 </ul>
             </li>
-            <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="dashicons dashicons-groups"></i><span class="nav-title">Estimate</span></a>
+            <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-money"></i><span class="nav-title">Estimate</span></a>
                 <ul aria-expanded="false">
                     <li> <a href='{{route('customer.index')}}'>Manage Estimates</a> </li>
                     {{-- <li> <a href='{{route('customer.edit', auth()->user()->id)}}'>Manage Estimates</a> </li> --}}

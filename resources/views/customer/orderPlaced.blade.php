@@ -40,7 +40,7 @@
                 <div class="card-body row">
                     <div class="col"> <strong>Shipping From:</strong> <br>{{$summary->origin}}</div>
                     <div class="col"> <strong>Shipping To:</strong> <br>{{$summary->destination}}</div>
-                    <div class="col"> <strong>Estimated Delivery In:</strong> <br>{{$summary->trip_time}}<br>(Subject to change)</div>
+                    <div class="col"> <strong>Estimated Delivery In:</strong> <br>{{$summary->trip_time}}<br>(Subject to change due to traffic or unforseen circumstances)</div>
                     <div class="col"> <strong>Tracking #:</strong> <br>{{$summary->tracking}}</div>
                 </div>
             </article>
