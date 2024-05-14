@@ -69,15 +69,13 @@
                     </div> --}}
                     <div class="about-section display-flex">
                         <div>
-                            <div class="about-section-title" style="margin-left: 20px">
-                                <strong id="trip-cost"></strong>
-                            </div>
+                            
                             <div class="trip-fare-container trip-fare-driver font-weight-light">
 
                                 <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
                                     <span class="float-left">Estimate Price</span>
-                                    <span class="float-right blue-price" id="trip-cost" ></span>
+                                    <span id="trip-cost" class="" style="color:red;padding-left:400px;"></span>
                                     <span class="clearfix"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
