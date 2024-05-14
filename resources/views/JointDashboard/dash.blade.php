@@ -43,7 +43,7 @@
                 <div class="w-100 map-input-container map-input-container-bottom mt-3" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
-                        <input id="destination-input" class="controls flex-1" type="text" placeholder="    Enter a destination location">
+                        <input id="destination-input" class="controls flex-1" type="text" placeholder="    Enter a destination location" required>
                     </div>
                     {{-- <span class="dotted-line-index"></span> --}}
                 </div>
