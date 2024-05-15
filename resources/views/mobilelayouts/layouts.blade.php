@@ -54,7 +54,7 @@
 <script src="{{asset('mobstyle/js/popper.min.js')}}"></script>
 <script src="{{asset('mobstyle/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('mobstyle/js/main.js')}}"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1eGdP6hCYQ06z86dMEwoLNFMPYPbhgYs&amp;libraries=places&amp;callback=initMap"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var platform = new H.service.Platform({
@@ -76,25 +76,6 @@
             zoom: 12,
             pixelRatio: window.devicePixelRatio || 1
         });
-
-         // Get user's current location and center the map on it
-         if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var userLocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    // Center the map on the user's location
-                    map.setCenter(userLocation);
-                }, function(error) {
-                    console.error('Error getting current location:', error);
-                    // Handle errors, e.g., user denied geolocation permission
-                });
-            } else {
-                console.error('Geolocation is not supported by this browser.');
-                // Handle case where geolocation is not supported
-            }
         
         var ui = H.ui.UI.createDefault(map, defaultLayers);
 
@@ -102,16 +83,6 @@
 
         var markerGroup = new H.map.Group();
         map.addObject(markerGroup);
-
-        //var router = platform.getRoutingService();
-
-        function addMarkerAndCenter(position, isOrigin) {
-                var marker = new H.map.Marker(position);
-                markerGroup.addObject(marker);
-                if (isOrigin) {
-                    map.setCenter(position);
-                }
-            }
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -134,6 +105,8 @@
                     }, function(result) {
                         // Extract the address from the result
                         var address = result.items[0].address.label;
+                         locationInput.value = address;
+                        //currentLocationElement.textContent = 'Current Location: ' + address;
                          //locationInput.value = address;
                         currentLocationElement.textContent = 'Current Location: ' + address;
                     }, function(error) {
@@ -145,6 +118,14 @@
                 });
             } else {
                 console.error('Geolocation is not supported by this browser.');
+            }
+
+            function addMarkerAndCenter(position, isOrigin) {
+                var marker = new H.map.Marker(position);
+                markerGroup.addObject(marker);
+                if (isOrigin) {
+                    map.setCenter(position);
+                }
             }
 
             function performAutosuggest(inputField, suggestionList, isOrigin, polylineCallback, tripFareCallback) {
@@ -176,6 +157,7 @@
                                     var suggestion = document.createElement('li');
                                     suggestion.textContent = item.title;
                                     suggestion.addEventListener('click', function() {
+                                        setAddress(item.title, isOrigin);
                                         inputField.value = item.title;
                                         suggestionList.innerHTML = '';
                                         var position = { lat: item.position.lat, lng: item.position.lng };
@@ -195,6 +177,14 @@
                         });
                 });
             }
+
+                function setAddress(address, isOrigin) {
+                    if (isOrigin) {
+                        document.getElementById('origin_address').value = address;
+                    } else {
+                        document.getElementById('destination_address').value = address;
+                    }
+                }
                 // Define a function to handle polyline calculation
                 function calculatePolyline(position, isOrigin) {
                     // Check if it's the origin or destination
@@ -235,7 +225,9 @@
                             map.addObject(polyline);
 
                             // Zoom to fit the route polyline
-                            map.getViewModel().setLookAtData({ bounds: polyline.getBoundingBox() });
+                            var bounds = polyline.getBounds();
+                            map.getViewModel().setLookAtData({ bounds: bounds });
+                            // map.getViewModel().setLookAtData({ bounds: polyline.getBoundingBox() });
                         })
                         .catch(error => {
                             console.error('Error fetching route:', error);
@@ -294,6 +286,13 @@
                         timeText += minutes.toFixed(0) + ' minutes';
 
                         // Display trip details on HTML page
+                        document.getElementById('trip-distance-init').innerHTML = '<b>Distance</b>: ' + distance.toFixed(2) + ' km';
+                        document.getElementById('trip-time-init').innerHTML = '<b>Time</b>: ' + timeText;
+                        // document.getElementById('trip-cost').innerHTML = 'Trip Cost: ' + '<br>' +'$'+tripCost.toFixed(2);
+
+                        // Populate hidden input fields with trip details
+                        document.getElementById('trip_distance').value = distance.toFixed(2);
+                        document.getElementById('trip_time').value = timeText;
                         document.getElementById('trip-distance').innerHTML = distance.toFixed(2) + ' km';
                         document.getElementById('trip-time').innerHTML = timeText;
                         document.getElementById('trip-cost').innerHTML = '$'+tripCost.toFixed(2);
@@ -301,15 +300,25 @@
                     .catch(error => {
                         console.error('Error fetching trip details:', error);
                     });
-            }
+                }
 
                 // Function to calculate trip cost based on distance (for example)
                 function calculateTripCost(distance) {
                     // Sample calculation for trip cost based on distance
-                    var baseFare = 3.5; // Base fare in dollars
-                    var ratePerKm = 2.5; // Rate per kilometer in dollars
-                    var tripCost = baseFare + distance * ratePerKm; // Total trip cost
-                    return tripCost;
+                    fetch('/fetch-fare-rate')
+                        .then(response => response.json())
+                        .then(data => {
+                            var baseFare = parseFloat(data.base_fare);
+                            var ratePerKm = parseFloat(data.rate_per_km);
+                            var tripCost = baseFare + distance * ratePerKm; 
+                            //console.log(tripCost);
+                            document.getElementById('trip_cost_init').innerHTML = '<b>Trip Cost</b>: ' + '$'+tripCost.toFixed(2);
+                            document.getElementById('trip_cost').value = tripCost.toFixed(2);
+                            return tripCost;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching fare and rate:', error);
+                        });
                 }
 
             performAutosuggest(document.getElementById('location-input'), suggestionList, true, calculatePolyline, calculateTrip);

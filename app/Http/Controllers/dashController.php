@@ -15,6 +15,14 @@ class dashController extends Controller
         if(auth()->User()->hasRole('admin'))
         {
             return view('admin.dash');
+
+        }else if(auth()->User()->hasRole('driver'))
+        {
+            return view('driver.dash');
+
+        }else if(auth()->User()->hasRole('partners'))
+        {
+            return view('partner.dash');
         }
         // return view('customer.dash');
         return view('JointDashboard.dash');

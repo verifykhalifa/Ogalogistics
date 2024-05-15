@@ -12,6 +12,12 @@
                     <li> <a href='/managedriver'>Manage Driver</a> </li>
                 </ul>
             </li>
+            <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="dashicons dashicons-groups"></i><span class="nav-title">Estimate</span></a>
+                <ul aria-expanded="false">
+                    <li> <a href='{{route('customer.index')}}'>Manage Estimates</a> </li>
+                    {{-- <li> <a href='{{route('customer.edit', auth()->user()->id)}}'>Manage Estimates</a> </li> --}}
+                </ul>
+            </li>
             <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="dashicons dashicons-groups"></i><span class="nav-title">Partner</span></a>
                 <ul aria-expanded="false">
                     <li> <a href='/partnersreg'>Create Partner</a> </li>

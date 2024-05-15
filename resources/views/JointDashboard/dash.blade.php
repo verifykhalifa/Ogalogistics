@@ -21,81 +21,63 @@
                <!--Google Maps Start-->
                <div id="map-container" class="h-100"></div>
 
-               <!--Tapped Car Information Container Start-->
+               <!--Tapped Car Information Container Start-->;
+    <form id="tripDetailsForm" method="POST" action="{{route('order.placed', hash('sha256', (string)auth()->user()->id))}}"> 
+        @csrf
         <div class="">
             <div class="request-item-container remaining-height">
-                
                 <div class="all-wide-container history-items-container overflow-scroll-y remaining-height">
                     <div class="history-item driver-request">
-
-                       
-
                         <div class="border-bottom-primary">
                             <div class="status-container status-container-driver">
                             </div>
                         </div>
-
-                        
                         <div class="margin-top-10 height-auto" id="origin-input-container">
                 {{-- <span id="current-location"></span> --}}
-                <div class="w-100 map-input-container map-input-container-top mt-3">
+                <div class="w-100 map-input-container map-input-container-top mt-3" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
-                        <input id="location-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0;"  placeholder="    Pick up location">
+                        <input id="location-input" class="controls flex-1" type="text" placeholder="    Pick up location">
                     </div>
                 </div>
-                <div class="w-100 map-input-container map-input-container-bottom mt-3">
+                <div class="w-100 map-input-container map-input-container-bottom mt-3" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400">
                     <span class="map-input-icon"><img src="{{asset('mobstyle/icons/circle.svg')}}"  alt="Current Location Icon"></span>
                     <div class="map-input display-flex">
-                        <input id="destination-input" class="controls flex-1" type="text" style="border: solid 2px; border-radius: 5px; border-color: #c4c0c0; font-weight: 400"  placeholder="    Enter a destination location">
+                        <input id="destination-input" class="controls flex-1" type="text" placeholder="    Enter a destination location">
                     </div>
-                    <span class="dotted-line-index"></span>
+                    {{-- <span class="dotted-line-index"></span> --}}
                 </div>
                 <ul id="suggestion-list"></ul>  
             </div>
             {{-- <p id="distance"></p> --}}
             <div class="payment-options">
                 <div class="default-payment-method-container display-flex">
-                    {{-- <div class="cars-options">
-                        <div class="car-option" data-about-target-id="about-section-1">
-                            <img src="{{asset('mobstyle/icons/audi.svg')}}" alt="Car Option 1">
-                        </div>
-                        <div class="car-option active" data-about-target-id="about-section-2">
-                            <img src="{{asset('mobstyle/icons/limusine.svg')}}" alt="Car Option 2">
-                        </div>
-                        <div class="car-option" data-about-target-id="about-section-3">
-                            <img src="{{asset('mobstyle/icons/minivan.svg')}}" alt="Car Option 3">
-                        </div>
-                    </div> --}}
                     <div class="about-section display-flex">
                         <div>
-                            
-                            <div class="trip-fare-container trip-fare-driver font-weight-light">
 
+                            <div class="trip-fare-container trip-fare-driver font-weight-light">
                                 <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
+
                                     <span class="float-left">Estimate Price</span>
                                     <span id="trip-cost" class="" style="color:red;padding-left:400px;"></span>
                                     <span class="clearfix"></span>
+
+                                    {{-- <span class="float-left">Estimate Price</span> --}}
+                                    <span id="trip_cost_init"></span>
+
                                 </div>
                                 <!--Trip Fare Item End-->
-
-                                <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
-                                    <span class="float-left">Distance</span>
-                                    <span class="float-right blue-price" id="trip-distance"></span>
-                                    <span class="clearfix"></span>
+                                    {{-- <span class="float-left">Distance</span> --}}
+                                    <span id="trip-distance-init"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
-
-                                <!--Trip Fare Item Start-->
                                 <div class="trip-fare-item">
-                                    <span class="float-left">Time</span>
-                                    <span class="float-right blue-price" id="trip-time"></span>
-                                    <span class="clearfix"></span>
+                                    {{-- <span class="float-left">Time</span> --}}
+                                    <span id="trip-time-init"></span>
                                 </div>
                                 <!--Trip Fare Item End-->
-
                             </div>
                         </div>
                     </div>
@@ -106,8 +88,14 @@
                     </div>
                 </div> --}}
             </div>
+                <input type="hidden" id="origin_address" name="origin">
+                <input type="hidden" id="destination_address" name="destination">
+                <input type="hidden" id="trip_distance" name="trip_distance">
+                <input type="hidden" id="trip_time" name="trip_time">
+                <input type="hidden" id="trip_cost" name="trip_cost">
+                <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
             <div style="margin-top: 10px">
-                <button type="button" id="button1" class="btn btn-primary" style="width:100%">Request a Ride</button>
+                <button type="submit" id="button1" class="btn btn-primary" style="width:100%">Request a Ride</button>
             </div>
             </div>
             
@@ -116,168 +104,6 @@
 
 
              
-
-        <div class="not-map">
-
-            <!--Request Ride Button Container Start-->
-            
-            <!--Request Ride Button Container End-->
-
-            <!--Choose a Car Container Start-->
-             <div class="ride-options-bottom hidden">
-                <div class="cars-options">
-                    <div class="car-option" data-about-target-id="about-section-1">
-                        <img src="{{asset('mobstyle/icons/audi.svg')}}" alt="Car Option 1">
-                    </div>
-                    <div class="car-option active" data-about-target-id="about-section-2">
-                        <img src="{{asset('mobstyle/icons/limusine.svg')}}" alt="Car Option 2">
-                    </div>
-                    <div class="car-option" data-about-target-id="about-section-3">
-                        <img src="{{asset('mobstyle/icons/minivan.svg')}}" alt="Car Option 3">
-                    </div>
-                </div>
-                <div class="about-section">
-                    <div class="about-section-1 hidden">
-                        <div class="about-section-title">
-                            Economy Ride: <strong>$30.00</strong> / 6.85 km /
-                            <span class="black-text">3 Minutes</span>
-                        </div>
-                        <div class="about-section-more">
-                            NOTE: This is an approximate estimate. Actual cost may vary according
-                            to the traffic.
-                        </div>
-                    </div>
-                    <div class="about-section-2">
-                        <div class="about-section-title">
-                            <div class="about-section-title">
-                                Limo Ride: <strong>$50.00</strong> / 6.85 km /
-                                <span class="black-text">7 Minutes</span>
-                            </div>
-                        </div>
-                        <div class="about-section-more">
-                            NOTE: This is an approximate estimate. Actual cost may vary according
-                            to the traffic.
-                        </div>
-                    </div>
-                    <div class="about-section-3 hidden">
-                        <div class="about-section-title">
-                            <div class="about-section-title">
-                                Super Ride: <strong>$100.00</strong> / 6.85 km /
-                                <span class="black-text">10 Minutes</span>
-                            </div>
-                        </div>
-                        <div class="about-section-more">
-                            NOTE: This is an approximate estimate. Actual cost may vary according
-                            to the traffic.
-                        </div>
-                    </div>
-                </div>
-                <div class="payment-options">
-                    <div class="default-payment-method-container display-flex">
-                        <div class="float-left wishes">
-                            <img src="{{asset('mobstyle/icons/cash.svg')}}" alt="Cash Icon" class="h-100">
-                        </div>
-                        <div class="payment-option-content">
-                            Cost of freight
-                            {{-- <span class="payment-options-more">Default Payment Method</span> --}}
-                        </div>
-                    </div>
-                    <div class="send-wishes-container">
-                        {{-- <div class="float-left wishes">
-                            <img src="{{asset('mobstyle/icons/wishes.svg')}}" class="h-100"  alt="Wishes Icon">
-                        </div> --}}
-                        <div class="payment-option-content">
-                            <p id="trip-cost"></p>
-                            {{-- <span class="payment-options-more">Write your wishes to driver</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="confirm-ride-btn">
-                    <button type="button" class="btn btn-primary">Confirm</button>
-                </div>
-            </div>
-            <!--Choose a Car Container End-->
-
-            <!--Wish Container Start-->
-            {{-- <div class="wish-container hidden">
-                <div class="close-wish">
-                        <span class="float-right">
-                            <img src="{{asset('mobstyle/icons/close.svg')}}" alt="Close Icon">
-                        </span>
-                        <span class="clearfix"></span>
-                </div>
-                <div class="wish-content-intro-container">
-                    <span class="write-wishes-text">Write Wishes To Driver</span>
-                    <span class="float-right"><img src="{{asset('mobstyle/icons/angle-right.svg')}}" alt="Angle Right Icon"></span>
-                </div>
-                <div class="font-weight-light wishes-main-text">
-                    <p>
-                        By Clicking on the link above, you can write your comments or wishes to the driver.
-                    </p>
-                    <p>
-                        Please write a polite message and kindly state your wishes.
-                        Make sure that your wishes will not make the driver uncomfortable.
-                        Enjoy your ride!
-                    </p>
-                </div>
-                <div class="enter-wish hidden">
-                    <textarea class="width-100 height-100 font-weight-light" placeholder="Please enter your wishes here..."></textarea>
-                </div>
-                <div class="send-wish-btn hidden">
-                    <button type="button" class="btn btn-primary">Send</button>
-                </div>
-            </div> --}}
-            <!--Wish Container End-->
-
-            <!--Payment Options Container Start-->
-            {{-- <div class="payment-options-container hidden">
-                <div class="payment-ready-btn">
-                     <span class="text-uppercase float-right ready">
-                         Ready
-                     <img class="hidden" src="{{asset('mobstyle/icons/close.svg')}}" alt="Close Icon"></span>
-                </div>
-                <div class="payment-options-intro-container">
-                    <span class="payment-options-text"><span class="fas fa-dollar-sign"></span> Payment By Cash</span>
-                    <span class="fas fa-chevron-down float-right"></span>
-                </div>
-                <div>
-                    <ul class="payment-option-list hidden">
-                        <li>
-                            <span class="fas fa-dollar-sign"></span> Payment By Cash
-                            <span class="float-right check">
-                                <img src="{{asset('mobstyle/icons/check.svg')}}"  alt="Check Icon">
-                            </span>
-                        </li>
-                        <li>
-                            <span class="fab fa-cc-visa"></span> Credit Card
-                            <span class="float-right hidden check">
-                                <img src="{{asset('mobstyle/icons/check.svg')}}"  alt="Check Icon">
-                            </span>
-                        </li>
-                        <li>
-                            <span class="paypal-icon"><img src="{{asset('mobstyle/icons/paypal.svg')}}"  alt="Paypal Icon"></span> PayPal
-                            <span class="float-right hidden check">
-                                <img src="{{asset('mobstyle/icons/check.svg')}}"  alt="Check Icon">
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="add-new-card-container">
-                    <button type="button" class="btn btn-dark">Add New Credit Card <img class="plus-icon" src="{{asset('mobstyle/icons/plus.svg')}}" alt="Add Icon"></button>
-                </div>
-                <div class="payment-options-main-text">
-                    Paying by card is fast and convenient option. Click the button to
-                    add a new card. The amount will be charged after the trip.
-                </div>
-            </div> --}}
-            <!--Payment Options Container End-->
-
-            <!--Tap on Car Red Text Start-->
-            {{-- <div class="tap-on-car hidden">
-                <span>Tap on the car of your choice</span>
-            </div> --}}
-            <!--Submit Review Container End-->
-        </div>
     </div>
-    
+</form>
 @endsection

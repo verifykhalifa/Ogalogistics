@@ -1,4 +1,4 @@
-@extends('mobilelayouts.driver')
+@extends('mobilelayouts.layouts')
 
 @section('content')
 
@@ -20,27 +20,11 @@
 <!--Page Title & Icons End-->
 
 <!--Google Maps Start-->
-<div id="map" class="h-100"></div>
+<div id="map-container" style="height: 60%"></div>
 <!--Google Maps End-->
 
 <!--All Notifications & Status Container Start-->
 <div class="change-request-status">
-    <label class="switch float-left">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-    <img src="{{asset('mobstyle/icons/map-position.svg')}}" class="float-right" alt="Map Position">
-    <div class="clearfix"></div>
-
-    <!--Notification Container Start-->
-    <div class="request-notification-container map-notification offline-notification map-notification-warning">
-        You are offline!
-        <div class="font-weight-light">
-            Go online to accept jobs!
-        </div>
-    </div>
-    <!--Notification Container End-->
-
     <!--Notification Container Start-->
     <div class="request-notification-container hidden map-notification meters-left-450 map-notification-warning">
         450 meters to the final goal
@@ -61,7 +45,7 @@
 
     <!--Link Notification Container Start-->
     <a href="new-requests.html" class="new-request href-decoration-none">
-        <div class="request-notification-container hidden map-notification new-request-notification">
+        <div class="request-notification-container map-notification new-request-notification">
             3 New Requests!
             <div class="font-weight-light">
                 Please accept or decline request
@@ -80,7 +64,7 @@
 <!--Go To Pickup Button End-->
 
 <!--Tapped Car Information Container Start-->
-<div class="tapped-car-info request hidden">
+<div class="tapped-car-info request">
     <div class="request-item-container remaining-height">
         <div class="profile-information text-center">
             <div class="profile-information">
@@ -90,15 +74,6 @@
         </div>
         <div class="all-wide-container history-items-container overflow-scroll-y remaining-height">
             <div class="history-item driver-request">
-
-                <!--Wishes Container Start-->
-                <div class="notification-container">
-                    <div class="grey-label">Wishes</div>
-                    <p class="grey-label font-weight-light">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis velit vitae enim gravida lacinia. Ut at auctor arcu. Ut eu pellentesque tortor.
-                    </p>
-                </div>
-                <!--Wishes Container End-->
 
                 <div class="border-bottom-primary">
                     <div class="status-container status-container-driver">
@@ -130,7 +105,7 @@
                 <!--Addresses Container End-->
 
                 <!--All Trips Container Start-->
-                <div class="all-trip-fares">
+                <div class="all-trip-fares hidden">
                     <div class="border-bottom-primary border-bottom-light-grey">
                         <div class="text-uppercase trip-fare">Trip Fare</div>
                     </div>
@@ -159,7 +134,6 @@
                             <span class="clearfix"></span>
                         </div>
                         <!--Trip Fare Item End-->
-
                     </div>
                 </div>
                 <!--All Trips Container End-->
@@ -303,7 +277,6 @@
                     </div>
                 </div>
                 <!--Pickup Buttons Container End-->
-
             </div>
         </div>
     </div>
